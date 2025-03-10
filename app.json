@@ -12,7 +12,8 @@
       "backgroundColor": "#8A4AF3"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "enabled": true
     },
     "assetBundlePatterns": [
       "**/*"
@@ -21,7 +22,9 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.filipsapps.gazzer",
       "infoPlist": {
-        "NSPhotoLibraryUsageDescription": "This app needs access to your photo library to send images in the chat."
+        "NSPhotoLibraryUsageDescription": "This app needs access to your photo library to upload images for events.",
+        "NSLocationWhenInUseUsageDescription": "This app needs access to your location to show nearby events and friends.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "This app needs access to your location to show nearby events and friends even when the app is in the background."
       }
     },
     "android": {
@@ -31,12 +34,18 @@
       },
       "package": "com.filipsapps.gazzer",
       "permissions": [
-        "READ_EXTERNAL_STORAGE",
-        "WRITE_EXTERNAL_STORAGE"
+        "CAMERA",
+        "READ_MEDIA_IMAGES",
+        "WRITE_EXTERNAL_STORAGE",
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION",
+        "RECEIVE_BOOT_COMPLETED",
+        "SCHEDULE_EXACT_ALARM"
       ]
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
     },
     "scheme": "gazzer",
     "extra": {
@@ -44,10 +53,30 @@
         "projectId": "gazzer-1a03c"
       }
     },
-    "newArchEnabled": true,
+    "sdkVersion": "52.0.0",
+    "newArchEnabled": false,
     "plugins": [
-      "expo-font",
-      "expo-localization"
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app needs access to your photos to upload images for events."
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow Gazzer to access your location to show nearby events and friends."
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "sounds": [
+            "./assets/notification.mp3"
+          ],
+          "icon": "./assets/icon.png"
+        }
+      ]
     ]
   }
 }
