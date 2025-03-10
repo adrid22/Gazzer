@@ -6,38 +6,24 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import * as SplashScreen from 'expo-splash-screen';
 import { Ionicons } from '@expo/vector-icons';
-import { colors } from './src/styles/styles'; // Esta ruta ahora debería funcionar
+import { colors } from './src/styles/styles'; // Importación de estilos
 import LoginScreen from './src/screens/LoginScreen';
 import RegisterScreen from './src/screens/RegisterScreen';
 import FriendsScreen from './src/screens/FriendsScreen';
 import MapScreen from './src/screens/MapScreen';
 import EventDetailsScreen from './src/screens/EventDetailsScreen';
 import CreateEventScreen from './src/screens/CreateEventScreen';
+import HomeScreen from './src/screens/HomeScreen';
+import ConnectionsScreen from './src/screens/ConnectionsScreen';
+import ProfileScreen from './src/screens/ProfileScreen';
 
-// Placeholders temporales para pantallas nuevas
-const HomeScreen = () => (
-  <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: colors.background }}>
-    <Text style={{ fontSize: 20, color: colors.text }}>Home Screen Placeholder</Text>
-  </View>
-);
-
-const ConnectionsScreen = () => (
-  <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: colors.background }}>
-    <Text style={{ fontSize: 20, color: colors.text }}>Connections Screen Placeholder</Text>
-  </View>
-);
-
-const ProfileScreen = () => (
-  <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: colors.background }}>
-    <Text style={{ fontSize: 20, color: colors.text }}>Profile Screen Placeholder</Text>
-  </View>
-);
-
+// Evitar que la pantalla de splash se oculte automáticamente
 SplashScreen.preventAutoHideAsync();
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
+// Stack para autenticación
 const AuthStack = () => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
     <Stack.Screen name="Login" component={LoginScreen} />
@@ -45,6 +31,7 @@ const AuthStack = () => (
   </Stack.Navigator>
 );
 
+// Stack para las pantallas principales
 const MainStack = () => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
     <Stack.Screen name="Home" component={HomeScreen} />
@@ -55,6 +42,7 @@ const MainStack = () => (
   </Stack.Navigator>
 );
 
+// Navigator de pestañas
 const TabNavigator = () => (
   <Tab.Navigator
     initialRouteName="Inicio"
@@ -102,6 +90,7 @@ const TabNavigator = () => (
   </Tab.Navigator>
 );
 
+// Componente principal de la app
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
