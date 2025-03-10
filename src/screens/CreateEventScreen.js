@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, TextInput, Button } from 'react-native';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../firebase/firebaseConfig'; // Ajustada la ruta
-import i18n from '../i18n/i18n'; // Ajustada previamente
+import i18n from '../i18n/i18n';
 import { colors, textStyles } from '../styles/styles'; // Añadido para consistencia
 
 const CreateEventScreen = ({ navigation }) => {

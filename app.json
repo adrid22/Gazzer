@@ -53,30 +53,6 @@
         "projectId": "gazzer-1a03c"
       }
     },
-    "newArchEnabled": false,
-    "plugins": [
-      [
-        "expo-image-picker",
-        {
-          "photosPermission": "The app needs access to your photos to upload images for events."
-        }
-      ],
-      [
-        "expo-location",
-        {
-          "locationAlwaysAndWhenInUsePermission": "Allow Gazzer to access your location to show nearby events and friends."
-        }
-      ],
-      [
-        "expo-notifications",
-        {
-          "sounds": [
-            "./assets/notification.mp3"
-          ],
-          "icon": "./assets/icon.png"
-        }
-      ],
-      "expo-font"
-    ]
+    "newArchEnabled": true
   }
 }
