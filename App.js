@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { StatusBar, Appearance, Platform, Alert } from 'react-native';
+import { StatusBar, Appearance, Platform, Alert, View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import * as SplashScreen from 'expo-splash-screen';
 import { Ionicons } from '@expo/vector-icons';
-import { colors } from './src/styles/styles'; // Estilos centralizados
+import { colors } from './src/styles/styles'; // Esta ruta ahora debería funcionar
 import LoginScreen from './src/screens/LoginScreen';
 import RegisterScreen from './src/screens/RegisterScreen';
 import FriendsScreen from './src/screens/FriendsScreen';
