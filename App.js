@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { StatusBar, Appearance, Platform, Alert, View, Text } from 'react-native';
+import { StatusBar, Appearance, Platform, Alert, View, Text, console } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import * as SplashScreen from 'expo-splash-screen';
 import { Ionicons } from '@expo/vector-icons';
-import { colors } from './src/styles/styles'; // Importación de estilos
+import { colors } from './src/styles/styles';
 import LoginScreen from './src/screens/LoginScreen';
 import RegisterScreen from './src/screens/RegisterScreen';
 import FriendsScreen from './src/screens/FriendsScreen';
@@ -17,13 +17,11 @@ import HomeScreen from './src/screens/HomeScreen';
 import ConnectionsScreen from './src/screens/ConnectionsScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
 
-// Evitar que la pantalla de splash se oculte automáticamente
 SplashScreen.preventAutoHideAsync();
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-// Stack para autenticación
 const AuthStack = () => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
     <Stack.Screen name="Login" component={LoginScreen} />
@@ -31,7 +29,6 @@ const AuthStack = () => (
   </Stack.Navigator>
 );
 
-// Stack para las pantallas principales
 const MainStack = () => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
     <Stack.Screen name="Home" component={HomeScreen} />
@@ -42,7 +39,6 @@ const MainStack = () => (
   </Stack.Navigator>
 );
 
-// Navigator de pestañas
 const TabNavigator = () => (
   <Tab.Navigator
     initialRouteName="Inicio"
@@ -65,7 +61,7 @@ const TabNavigator = () => (
       tabBarActiveTintColor: colors.primary,
       tabBarInactiveTintColor: colors.gray,
       tabBarStyle: {
-        backgroundColor: colors.background,
+        backgroundColor: colors.background || '#FFFFFF',
         height: Platform.OS === 'ios' ? 90 : 60,
         paddingBottom: Platform.OS === 'ios' ? 20 : 5,
         paddingTop: 5,
@@ -90,13 +86,20 @@ const TabNavigator = () => (
   </Tab.Navigator>
 );
 
-// Componente principal de la app
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [appIsReady, setAppIsReady] = useState(false);
   const [userData, setUserData] = useState(null);
   const auth = getAuth();
+
+  useEffect(() => {
+    if (!colors || !colors.background) {
+      console.error('Colors is undefined or missing properties:', colors);
+    } else {
+      console.log('Colors loaded successfully:', colors);
+    }
+  }, []);
 
   const colorScheme = Appearance.getColorScheme();
   const [theme, setTheme] = useState(colorScheme === 'dark' ? 'dark' : 'light');
@@ -149,7 +152,7 @@ export default function App() {
     <>
       <StatusBar
         barStyle={theme === 'dark' ? 'light-content' : 'dark-content'}
-        backgroundColor={theme === 'dark' ? colors.darkBackground : colors.background}
+        backgroundColor={theme === 'dark' ? colors.darkBackground || '#1A1A1A' : colors.background || '#FFFFFF'}
         translucent={false}
       />
       <NavigationContainer theme={theme === 'dark' ? { dark: true } : { dark: false }}>

@@ -1,3 +1,4 @@
+// C:\Users\filip\Gazzer\src\styles\styles.js
 export const colors = {
   primary: '#8A4AF3',
   background: '#FFFFFF',

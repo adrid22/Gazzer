@@ -53,7 +53,6 @@
         "projectId": "gazzer-1a03c"
       }
     },
-    "sdkVersion": "52.0.0",
     "newArchEnabled": false,
     "plugins": [
       [
@@ -76,7 +75,8 @@
           ],
           "icon": "./assets/icon.png"
         }
-      ]
+      ],
+      "expo-font"
     ]
   }
 }
