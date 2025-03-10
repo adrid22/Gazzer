@@ -1,0 +1,10 @@
+# Ignorar node_modules y archivos generados
+node_modules/
+*.log
+*.json.lock
+
+# Ignorar archivos sensibles
+firebaseConfig.js
+*.env
+build/
+.DS_Store

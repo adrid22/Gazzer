@@ -1,0 +1,53 @@
+{
+  "expo": {
+    "name": "Gazzer",
+    "slug": "gazzer",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#8A4AF3"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.filipsapps.gazzer",
+      "infoPlist": {
+        "NSPhotoLibraryUsageDescription": "This app needs access to your photo library to send images in the chat."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#8A4AF3"
+      },
+      "package": "com.filipsapps.gazzer",
+      "permissions": [
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "scheme": "gazzer",
+    "extra": {
+      "eas": {
+        "projectId": "gazzer-1a03c"
+      }
+    },
+    "newArchEnabled": true,
+    "plugins": [
+      "expo-font",
+      "expo-localization"
+    ]
+  }
+}
