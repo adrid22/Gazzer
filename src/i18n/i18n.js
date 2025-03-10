@@ -1,8 +1,6 @@
-// C:\Users\filip\Gazzer\src\i18n\i18n.js
+const i18n = require('i18n-js');
 import * as Localization from 'expo-localization';
-import i18n from 'i18n-js';
 
-// Configura las traducciones
 i18n.translations = {
   en: {
     welcome: 'Welcome',
@@ -30,11 +28,7 @@ i18n.translations = {
   }
 };
 
-// Establece el locale basado en el dispositivo
-i18n.locale = Localization.locale;
-
-// Habilita fallbacks
+i18n.defaultLocale = Localization.locale;
 i18n.fallbacks = true;
 
-// Exporta i18n
 export default i18n;

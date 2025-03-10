@@ -1,11 +1,11 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { colors } from '../styles/styles';
+import i18n from '../i18n/i18n';
 
-const HomeScreen = () => (
-  <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: colors.background }}>
-    <Text style={{ fontSize: 20, color: colors.text }}>Home Screen Placeholder</Text>
-  </View>
-);
-
-export default HomeScreen;
+export default function HomeScreen() {
+  return (
+    <View style={{ padding: 20 }}>
+      <Text>{i18n.t('home')}</Text>
+    </View>
+  );
+}
